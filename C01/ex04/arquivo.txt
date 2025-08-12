@@ -1,0 +1,18 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main () {
+	Armando Francisco Borges
+	armando
+	francisco
+	borges
+	borges
+	francisco maria filipe, armando a sfljlkas
+	ask;as a;flkasff a armando
+	armando
+
+	armando
+
+	armando
+}
