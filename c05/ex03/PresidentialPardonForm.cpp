@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:38:41 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 15:27:54 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/15 12:40:47 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ PresidentialPardonForm::PresidentialPardonForm()
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &value) 
     : target(value.target) 
 {
-    std::cout << "Copy construct PresidentialPardonForm called" << std::endl;
+    std::cout << GREEN << "Copy construct PresidentialPardonForm called" << FECHA << std::endl;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &value)

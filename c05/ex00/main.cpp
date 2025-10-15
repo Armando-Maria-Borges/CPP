@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 19:20:52 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/04 13:05:16 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/14 14:07:51 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main()
     std::cout << obj << std::endl;
     while (grade)
     {
-        std::clog << "\n**1 (nota mais alta possível) a 150 (nota mais baixa possível)";
+        std::clog << GREEN << "\n**1 (nota mais alta possível) a 150 (nota mais baixa possível)" << FECHA;
         std::clog << "\n**CHOOSE DE OPTION: 1(--) AND 2(++)\n_";
         std::cin>>grade;
 

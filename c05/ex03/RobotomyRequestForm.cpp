@@ -6,11 +6,12 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:37:52 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 15:27:14 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/15 12:52:14 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm()
     : AForm("Form_Robot", false, 72, 45)
@@ -18,9 +19,10 @@ RobotomyRequestForm::RobotomyRequestForm()
     std::cout << GREEN << "Default construct RobotomyRequestForm called" << FECHA << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &value) : target(value.target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &value)
 {
     std::cout << GREEN << "Copy construct RobotomyRequestForm called" << FECHA << std::endl;
+    *this = value;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &value)
@@ -33,7 +35,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &v
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-    std::cout << "Destruct RobotomyRequestForm called" << std::endl;
+    std::cout << GREEN << "Destruct RobotomyRequestForm called" << FECHA << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
@@ -42,17 +44,24 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target)
 
 void    RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-    if (!this->getAssin())
+    try
     {
-        std::cout << this->getName() << " Não assinado \n";
-        return ;
+        if (!this->getAssin())
+        {
+            std::cout << this->getName() << " Não assinado \n";
+            return ;
+        }
+        else if (!(executor.getGrade() <= this->getexecuGrade()))
+        {
+            throw GradeTooLowException();
+        }
+    
+        std::cout << target << " nguirrrrrrrrr\n";
+        std::cout << target << " Foi robotizado com sucesso em "
+                  << std::rand() % 100 << "%" << " das vezes\n";
     }
-    else if (!(executor.getGrade() <= this->getexecuGrade()))
+    catch(const std::exception& e)
     {
-        throw GradeTooLowException();
+        std::cerr << e.what() << '\n';
     }
-
-    std::cout << target << " nguirrrrrrrrr\n";
-    std::cout << target << " Foi robotizado com sucesso em "
-                << std::rand() % 100 << "%" << " das vezes\n";
 }

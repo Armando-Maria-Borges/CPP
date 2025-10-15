@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 16:37:14 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 15:29:39 by aborges          ###   ########.fr       */
+/*   Created: 2025/08/04 16:05:38 by aborges           #+#    #+#             */
+/*   Updated: 2025/08/11 11:36:21 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RRF_H
-#define RRF_H
+#ifndef SCF_H
+#define SCF_H
 #include <iostream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <cstdlib>
 
-#define GREEN "\033[48;2;0;50;0m" "\033[38;2;0;0;0m"
-#define FECHA "\033[0m"
-
-class RobotomyRequestForm : public AForm
+class ShrubberyCreationForm : public AForm
 {
 private:
     std::string target;
 public:
-    RobotomyRequestForm();
-    RobotomyRequestForm(const RobotomyRequestForm& value);
-    RobotomyRequestForm& operator=(const RobotomyRequestForm& value);
-    ~RobotomyRequestForm();
+    ShrubberyCreationForm();
+    ShrubberyCreationForm(const ShrubberyCreationForm& value);
+    ShrubberyCreationForm& operator=(const ShrubberyCreationForm& value);
+    ~ShrubberyCreationForm();
 
-    RobotomyRequestForm(std::string target);
-    void    execute(Bureaucrat const &executor) const;
+    ShrubberyCreationForm(const std::string target);
+    void execute(Bureaucrat const & executor) const;
 };
 
 #endif

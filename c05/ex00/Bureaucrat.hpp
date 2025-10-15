@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 19:18:56 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/04 11:23:40 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/14 13:52:55 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <iostream>
 #define MIN 1
 #define MAX 150
+
+#define GREEN "\033[48;2;0;40;0m"
+#define FECHA "\033[0m"
 
 class Bureaucrat
 {
@@ -40,6 +43,7 @@ public:
     };
 
     Bureaucrat(int grade);
+    Bureaucrat(std::string mame, int grade);
     std::string getName () const;
     int         getGrade() const;
     void setIncrementGrade();

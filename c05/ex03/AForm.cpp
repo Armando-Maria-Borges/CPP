@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:22:33 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 14:44:35 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/14 15:34:36 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : name("Form"), assin(false), assinGrade(0), execuGrade(0)
+AForm::AForm() : name("AForm"), assin(false), assinGrade(0), execuGrade(0)
 {
-    std::cout << GREEN << "Default construct Form called" << FECHA << std::endl;
+    std::cout << GREEN << "Default construct AForm called" << FECHA << std::endl;
 }
 
-Form::Form(std::string name, int assinGrade, int execuGrade, bool assin) 
-    : name(name), assin(assin), assinGrade(assinGrade), execuGrade(execuGrade)
+AForm::AForm(std::string name, int assinGrade, int execuGrade, bool assin) 
+: name(name), assin(assin), assinGrade(assinGrade), execuGrade(execuGrade)
 {
     try
     {
         if (assinGrade < MIN)
-            throw Form::GradeTooHighException();
+            throw AForm::GradeTooHighException();
         else if (assinGrade > MAX)
-            throw Form::GradeTooLowException();
+            throw AForm::GradeTooLowException();
         if (execuGrade < MIN)
-            throw Form::GradeTooHighException();
+            throw AForm::GradeTooHighException();
         else if (execuGrade > MAX)
-            throw Form::GradeTooLowException();
+            throw AForm::GradeTooLowException();
     }
     catch(const std::exception& e)
     {
@@ -38,25 +38,25 @@ Form::Form(std::string name, int assinGrade, int execuGrade, bool assin)
     }
 }
 
-Form::Form(const Form& value) : name(value.name), assin(value.assin), assinGrade(value.assinGrade), execuGrade(value.execuGrade)
+AForm::AForm(const AForm& value) : name(value.name), assin(value.assin), assinGrade(value.assinGrade), execuGrade(value.execuGrade)
 {
-    std::cout << GREEN << "Copy construct Form called" << FECHA << std::endl;
+    std::cout << GREEN << "Copy construct AForm called" << FECHA << std::endl;
 }
 
-Form& Form::operator=(const Form& value)
+AForm& AForm::operator=(const AForm& value)
 {
-    std::cout << GREEN << "Copy asigment construct Form called" << FECHA << std::endl;
+    std::cout << GREEN <<"Copy asigment construct AForm called" << FECHA << std::endl;
     if (this != &value)
         this->assin = value.assin;
     return (*this);
 }
 
-Form::~Form()
+AForm::~AForm()
 {
-    std::cout << GREEN << "Destruct Form called" << FECHA << std::endl;
+    std::cout << GREEN << "Destruct AForm called" << FECHA << std::endl;
 }
 
-bool Form::beSigned(Bureaucrat bur)
+bool AForm::beSigned(Bureaucrat bur)
 {
     if (this->assinGrade >= bur.getGrade())
     {
@@ -64,40 +64,40 @@ bool Form::beSigned(Bureaucrat bur)
         return (true);
     }
     else
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     return (false);
 }
 
-std::string Form::getName() const
+std::string AForm::getName() const
 {
     return (this->name);
 }
 
-bool Form::getAssin() const
+bool AForm::getAssin() const
 {
     return (this->assin);
 }
 
-int Form::getassinGrade() const
+int AForm::getassinGrade() const
 {
     return (this->assinGrade);
 }
 
-int Form::getexecuGrade() const
+int AForm::getexecuGrade() const
 {
     return (this->execuGrade);
 }
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
     return ("nota muito alta");
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
     return ("nota muito baixa");
 }
-std::ostream& operator<<(std::ostream& out, const Form& obj)
+std::ostream& operator<<(std::ostream& out, const AForm& obj)
 {
     out << obj.getName() << " " << obj.getAssin() << " " << obj.getassinGrade() 
     << " " << obj.getexecuGrade();

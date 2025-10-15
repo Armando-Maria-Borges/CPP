@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:22:28 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/04 13:59:49 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/15 12:27:37 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
     Form();
     Form(const Form& value);
     Form& operator=(const Form& value);
-    ~Form();
+    virtual ~Form();
 
     class GradeTooHighException : public std::exception
     {
@@ -43,7 +43,7 @@ public:
         const char* what() const throw();
     };
 
-    Form(std::string name, bool assin, int assinGrade, int execuGrade);
+    Form(std::string name, int assinGrade, int execuGrade, bool assin = false);
     std::string  getName()  const;
     bool         getAssin() const;
     int          getassinGrade() const;

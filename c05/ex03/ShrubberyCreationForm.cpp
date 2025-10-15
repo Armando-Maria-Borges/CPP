@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:07:02 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 15:27:31 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/15 12:42:27 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &value) 
     : target(value.target)
 {
-    std::cout << GREEN << "Copy construct ShrubberyCreationForm called" << FECHA  << std::endl;
+    std::cout << GREEN << "Copy construct ShrubberyCreationForm called" << FECHA << std::endl;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &value)
 {
-    std::cout << GREEN << "Copy asigment construct ShrubberyCreationForm called" << FECHA  << std::endl;
+    std::cout << GREEN << "Copy asigment construct ShrubberyCreationForm called" << FECHA << std::endl;
     if (this != &value)
         this->target = value.target;
     return (*this);
@@ -35,7 +35,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    std::cout << GREEN << "Destruct Bureaucrat called" << FECHA << std::endl;
+    std::cout << GREEN << "Destruct ShrubberyCreationForm called" << FECHA << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) 

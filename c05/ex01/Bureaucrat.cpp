@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 19:20:09 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/04 15:42:08 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/14 15:19:18 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Bureaucrat::Bureaucrat() : name("aborges")
 {
-    std::cout << "Default construct Bureaucrat called" << std::endl;
+    std::cout << GREEN << "Default construct Bureaucrat called" << FECHA << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &value) : name(value.name), grade(value.grade)
 {
-    //std::cout << "Copy construct Bureaucrat called" << std::endl;
+    std::cout << GREEN << "Copy construct Bureaucrat called" << FECHA << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &value)
 {
-    //std::cout << "Copy asigment construct Bureaucrat called" << std::endl;
+    std::cout << GREEN << "Copy asigment construct Bureaucrat called" << FECHA << std::endl;
     if (this != &value)
         this->grade = value.grade;
     return (*this);
@@ -32,7 +32,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &value)
 
 Bureaucrat::~Bureaucrat()
 {
-    //std::cout << "Destruct Bureaucrat called" << std::endl;
+    std::cout << GREEN << "Destruct Bureaucrat called" << FECHA << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
@@ -92,17 +92,28 @@ int Bureaucrat::getGrade() const
     return (this->grade);
 }
 
-void Bureaucrat::signForm(Form form, Bureaucrat obj) const
+void Bureaucrat::signForm(Form form) const
 {
-    if (form.beSigned(obj))
-        std::cout << "burocrata " << name << " assina a/o " << form.getName() << "\n";
-    else
+    try
+    {
+        if (this->grade < MIN)
+            throw Bureaucrat::GradeTooHighException();
+        else if (this->grade > MAX)
+            throw Bureaucrat::GradeTooLowException();
+
+        if (form.beSigned(*this) != true)
+        {
+            throw GradeTooLowException();
+        }
+        if (form.beSigned(*this))
+            std::cout << "burocrata " << name << " assina a/o " << form.getName() << "\n";
+    }
+    catch(const std::exception& e)
     {
         std::cout << "burocrata " << name << " não conseguiu assinar " << form.getName()
-                  << " devido a nota exigida\n";
-        std::cout << "Nota para assinar -> >=" << form.getassinGrade() 
-                  << " Nota do Bureaucrat -> " << obj.getGrade()
-                  << " \n";
+            << " devido a nota exigida\n";
+        std::cout << "Nota para assinar: >= " << form.getassinGrade() << " \n";
+        std::cerr << e.what() << "\n";
     }
 }
 
@@ -118,6 +129,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj)
 {
-    out << obj.getName() << " bureaucrat " << obj.getGrade();
+    out << "\n" << obj.getName() << " bureaucrat " << obj.getGrade();
     return out;
 }

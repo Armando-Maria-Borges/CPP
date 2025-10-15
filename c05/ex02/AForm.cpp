@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:22:33 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/08 11:02:40 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/14 15:33:19 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 AForm::AForm() : name("AForm"), assin(false), assinGrade(0), execuGrade(0)
 {
-    //std::cout << "Default construct AForm called" << std::endl;
+    std::cout << GREEN << "Default construct AForm called" << FECHA << std::endl;
 }
 
-AForm::AForm(std::string name, bool assin, int assinGrade, int execuGrade) : name(name), assin(assin), assinGrade(assinGrade), execuGrade(execuGrade)
+AForm::AForm(std::string name, int assinGrade, int execuGrade, bool assin) 
+: name(name), assin(assin), assinGrade(assinGrade), execuGrade(execuGrade)
 {
     try
     {
@@ -39,12 +40,12 @@ AForm::AForm(std::string name, bool assin, int assinGrade, int execuGrade) : nam
 
 AForm::AForm(const AForm& value) : name(value.name), assin(value.assin), assinGrade(value.assinGrade), execuGrade(value.execuGrade)
 {
-    //std::cout << "Copy construct AForm called" << std::endl;
+    std::cout << GREEN << "Copy construct AForm called" << FECHA << std::endl;
 }
 
 AForm& AForm::operator=(const AForm& value)
 {
-    std::cout << "Copy asigment construct AForm called" << std::endl;
+    std::cout << GREEN << "Copy asigment construct AForm called" << FECHA << std::endl;
     if (this != &value)
         this->assin = value.assin;
     return (*this);
@@ -52,7 +53,7 @@ AForm& AForm::operator=(const AForm& value)
 
 AForm::~AForm()
 {
-    //std::cout << "Destruct AForm called" << std::endl;
+    std::cout << "Destruct AForm called" << std::endl;
 }
 
 bool AForm::beSigned(Bureaucrat bur)
@@ -91,17 +92,17 @@ int AForm::getassinGrade() const
 
 int AForm::getexecuGrade() const
 {
-    return (this->assinGrade);
+    return (this->execuGrade);
 }
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-    return ("nota muito alta para AForm");
+    return ("nota muito alta");
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-    return ("nota muito baixa para AForm");
+    return ("nota muito baixa");
 }
 std::ostream& operator<<(std::ostream& out, const AForm& obj)
 {

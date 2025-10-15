@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 19:18:56 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 14:49:51 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/14 15:37:23 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 #define MIN 1
 #define MAX 150
 
@@ -48,7 +48,9 @@ public:
     int         getGrade() const;
     void setIncrementGrade();
     void setDecrementGrade();
-    void signForm(Form form) const;
+    
+    void signForm(AForm &form) const;
+    void executeForm(AForm const &form);
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj);
 

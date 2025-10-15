@@ -6,7 +6,7 @@
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:37:14 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 15:29:39 by aborges          ###   ########.fr       */
+/*   Updated: 2025/08/11 11:04:49 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 #include <iostream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <cstdlib>
-
-#define GREEN "\033[48;2;0;50;0m" "\033[38;2;0;0;0m"
-#define FECHA "\033[0m"
 
 class RobotomyRequestForm : public AForm
 {

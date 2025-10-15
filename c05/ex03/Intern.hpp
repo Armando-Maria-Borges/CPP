@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 16:37:14 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 15:29:39 by aborges          ###   ########.fr       */
+/*   Created: 2025/08/11 19:06:04 by aborges           #+#    #+#             */
+/*   Updated: 2025/08/14 15:40:08 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RRF_H
-#define RRF_H
-#include <iostream>
+#ifndef INTER_HPP
+#define INTER_HPP
+
 #include "AForm.hpp"
-#include "Bureaucrat.hpp"
-#include <cstdlib>
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include <iostream>
 
 #define GREEN "\033[48;2;0;50;0m" "\033[38;2;0;0;0m"
 #define FECHA "\033[0m"
 
-class RobotomyRequestForm : public AForm
+class Intern
 {
-private:
-    std::string target;
 public:
-    RobotomyRequestForm();
-    RobotomyRequestForm(const RobotomyRequestForm& value);
-    RobotomyRequestForm& operator=(const RobotomyRequestForm& value);
-    ~RobotomyRequestForm();
+    Intern();
+    ~Intern();
 
-    RobotomyRequestForm(std::string target);
-    void    execute(Bureaucrat const &executor) const;
+    AForm* obj(std::string target);
+    AForm* obj2(std::string target);
+    AForm* obj3(std::string target);
+    
+    AForm*    makeForm(std::string form_name, std::string form_dest);
 };
+
 
 #endif

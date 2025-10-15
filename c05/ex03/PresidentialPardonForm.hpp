@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aborges <aborges@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 16:37:14 by aborges           #+#    #+#             */
-/*   Updated: 2025/08/14 15:29:39 by aborges          ###   ########.fr       */
+/*   Created: 2025/08/04 16:38:17 by aborges           #+#    #+#             */
+/*   Updated: 2025/08/11 11:05:37 by aborges          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RRF_H
-#define RRF_H
+#ifndef PPF_H
+#define PPF_H
 #include <iostream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <cstdlib>
 
-#define GREEN "\033[48;2;0;50;0m" "\033[38;2;0;0;0m"
-#define FECHA "\033[0m"
-
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
     std::string target;
 public:
-    RobotomyRequestForm();
-    RobotomyRequestForm(const RobotomyRequestForm& value);
-    RobotomyRequestForm& operator=(const RobotomyRequestForm& value);
-    ~RobotomyRequestForm();
+    PresidentialPardonForm();
+    PresidentialPardonForm(const PresidentialPardonForm& value);
+    PresidentialPardonForm& operator=(const PresidentialPardonForm& value);
+    ~PresidentialPardonForm();
 
-    RobotomyRequestForm(std::string target);
+    PresidentialPardonForm(std::string target);
     void    execute(Bureaucrat const &executor) const;
 };
 
